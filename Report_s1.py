@@ -26,7 +26,7 @@ values = list(Data.values())
 # Bar Chart
 fig1, ax1 = plt.subplots(figsize=(10, 4))
 ax1.barh(nama, values, color='teal')
-ax1.set_title(f"Report Daily {today}", fontweight='bold')
+ax1.set_title(f"Report Daily {today} (Target Rp 6.500.000)", fontweight='bold')
 ax1.set_xlim(0, max(values)*1.1)
 ax1.ticklabel_format(style='plain', axis='x')
 ax1.set_xlabel("Repayment Amount")
@@ -94,7 +94,7 @@ hasil = list(Monthly.values())
 # Bar Chart
 fig3, ax3 = plt.subplots(figsize=(12, 6))
 ax3.barh(bulan, hasil, color='orange')
-ax3.set_title("Monthly Pending Recovery", fontweight='bold')
+ax3.set_title("Monthly Pending Recovery (Target 21.00% )", fontweight='bold')
 ax3.set_xlabel("Pending Amount Recovery")
 ax3.get_xaxis().set_visible(False)
 ax3.set_ylabel("Collector")
@@ -104,7 +104,7 @@ for spine in ax3.spines.values():
     spine.set_visible(False)
 
 def format_number(val):
-    return f"{val:.2f}".rstrip('0').rstrip('.') if isinstance(val, float) else str(val)
+    return f"{val:.2f}%".rstrip('0').rstrip('.') if isinstance(val, float) else str(val)
 
 max_month = max(hasil)
 for i, val in enumerate(hasil):
@@ -141,7 +141,7 @@ st.dataframe(df_rank_sorted)
 # ===================== SUMMARY =====================
 st.header("📌 Summary Report")
 
-Target = 7237417 
+Target = 6500000 
 total_payment = sum(Data.values())
 highest_name = max(Data, key=Data.get)
 highest_payment = Data[highest_name]
